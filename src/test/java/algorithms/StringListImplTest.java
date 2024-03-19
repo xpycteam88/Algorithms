@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringListImlTest {
-    StringList stringList = new StringListIml();
+class StringListImplTest {
+    StringList stringList = new StringListImpl();
 
     @BeforeEach
     void setUp() {
@@ -88,7 +88,7 @@ class StringListImlTest {
 
     @Test
     void equalsTest() {
-        StringList expected = new StringListIml(10);
+        StringList expected = new StringListImpl(10);
         expected.add("test1");
         expected.add("test2");
         expected.add("test3");

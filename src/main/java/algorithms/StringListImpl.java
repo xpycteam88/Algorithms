@@ -7,15 +7,15 @@ import algorithms.exceptions.NullElementException;
 
 import java.util.Arrays;
 
-public class StringListIml implements StringList {
+public class StringListImpl implements StringList {
     public final String[] array;
     private int size;
 
-    public StringListIml() {
+    public StringListImpl() {
         array = new String[10];
     }
 
-    public StringListIml(int size) {
+    public StringListImpl(int size) {
         array = new String[size];
     }
 
@@ -31,7 +31,9 @@ public class StringListIml implements StringList {
     public String add(int index, String item) {
         validateSize();
         validateElement(item);
-        validateIndex(index);
+        if (index < 0 || index > size) {
+            throw new InvalidIndexException();
+        }
         if (index == size) {
             array[index] = item;
             size++;
@@ -45,8 +47,8 @@ public class StringListIml implements StringList {
 
     @Override
     public String set(int index, String item) {
-        validateIndex(index);
         validateElement(item);
+        validateIndex(index);
         array[index] = item;
         return item;
     }
@@ -144,7 +146,7 @@ public class StringListIml implements StringList {
     }
 
     private void validateIndex(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new InvalidIndexException();
         }
     }
